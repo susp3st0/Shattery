@@ -21,15 +21,8 @@ intents.message_content = True
 intents.members = True
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-DEV_GUILD_ID = 1457996708293120086
-LOG_CHANNEL_ID = 1458302442239295667
-
 async def on_ready():
-
-    # sync global commands (slow but public)
     await bot.tree.sync()
-
-    # webhook ping
     requests.post(
         os.getenv("WEBHOOK_URL"),
         json={"content": "# bot online! <@&1458303852712562984>"}
@@ -151,6 +144,7 @@ requests.post(
     os.getenv("WEBHOOK_URL"),
     json={"content": "# bot offline"}
 )
+
 
 
 

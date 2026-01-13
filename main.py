@@ -49,8 +49,6 @@ chatbot = ChatBot(
 trainer = ChatterBotCorpusTrainer(chatbot)
 try:
     trainer.train("chatterbot.corpus.english")
-    trainer.train("chatterbot.corpus.spanish")
-    trainer.train("chatterbot.corpus.french")
 except FileNotFoundError:
     print("\n[!] Corpus not found. Please install it: pip install chatterbot-corpus\n")
 with open("training_data.txt", "r", encoding="utf-8") as file:
@@ -198,3 +196,4 @@ requests.post(
     os.getenv("WEBHOOK_URL"),
     json={"content": "# bot offline"}
 )
+

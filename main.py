@@ -19,33 +19,7 @@ if not hasattr(time, 'clock'):
 
 load_dotenv()
 ############## chatbot setup ##############
-chatbot = ChatBot(
-    "Shattery",
-    logic_adapters=[
-        # 1. CORE CONVERSATION: Finds the best match from your training data
-        {
-            "import_path": "chatterbot.logic.BestMatch",
-            "statement_comparison_function": "chatterbot.comparisons.LevenshteinDistance",
-            "response_selection_method": "chatterbot.response_selection.get_first_response",
-            "maximum_similarity_threshold": 0.70, # Sensitivity (0.1 to 1.0)
-            "default_response": "I'm sorry, I don't have an answer for that yet."
-        },
-
-        # 2. MATH EVALUATION: Solves arithmetic (e.g., "What is 100 / 5?")
-        "chatterbot.logic.MathematicalEvaluation",
-
-        # 3. TIME ADAPTER: Tells the current time (e.g., "What time is it?")
-        "chatterbot.logic.TimeLogicAdapter"
-    ],
-    preprocessors=[
-        'chatterbot.preprocessors.clean_whitespace', # Removes extra spaces
-        'chatterbot.preprocessors.unescape_html',     # Converts &amp; to &
-        'chatterbot.preprocessors.convert_to_ascii'   # Removes accents/special chars
-    ],
-    storage_adapter='chatterbot.storage.SQLStorageAdapter',
-    database_uri='sqlite:///database.sqlite3',
-    read_only=True
-)
+chatbot = ChatBot("Shattery")
 trainer = ChatterBotCorpusTrainer(chatbot)
 try:
     trainer.train("chatterbot.corpus.english")
@@ -196,4 +170,5 @@ requests.post(
     os.getenv("WEBHOOK_URL"),
     json={"content": "# bot offline"}
 )
+
 

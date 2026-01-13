@@ -21,13 +21,6 @@ load_dotenv()
 ############## chatbot setup ##############
 chatbot = ChatBot("Shattery")
 trainer = ChatterBotCorpusTrainer(chatbot)
-TRAIN = false
-if TRAIN:
-    trainer.train("chatterbot.corpus.english")
-except FileNotFoundError:
-    print("\n[!] Corpus not found. Please install it: pip install chatterbot-corpus\n")
-with open("training_data.txt", "r", encoding="utf-8") as file:
-    conversation = file.read().splitlines()
 list_trainer = ListTrainer(chatbot)
 list_trainer.train(conversation)
 ############################################
@@ -171,6 +164,7 @@ requests.post(
     os.getenv("WEBHOOK_URL"),
     json={"content": "# bot offline"}
 )
+
 
 
 

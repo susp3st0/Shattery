@@ -18,6 +18,7 @@ if not hasattr(time, 'clock'):
 load_dotenv()
 intents = discord.Intents.default()
 intents.message_content = True
+intents.members = True
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 DEV_GUILD_ID = 1457996708293120086
@@ -157,6 +158,7 @@ requests.post(
     os.getenv("WEBHOOK_URL"),
     json={"content": "# bot offline"}
 )
+
 
 
 

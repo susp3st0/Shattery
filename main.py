@@ -23,13 +23,19 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 DEV_GUILD_ID = 1457996708293120086
 LOG_CHANNEL_ID = 1458302442239295667
 
-@bot.event
 async def on_ready():
+    print("Bot online")
+
     guild = discord.Object(id=DEV_GUILD_ID)
+
+    # sync guild commands (fast for testing)
     bot.tree.copy_global_to(guild=guild)
     await bot.tree.sync(guild=guild)
-    bot.tree.clear_commands(guild=None)
-    await bot.tree.sync(guild=None)
+
+    # sync global commands (slow but public)
+    await bot.tree.sync()
+
+    # webhook ping
     requests.post(
         os.getenv("WEBHOOK_URL"),
         json={"content": "# bot online! <@&1458303852712562984>"}
@@ -151,6 +157,7 @@ requests.post(
     os.getenv("WEBHOOK_URL"),
     json={"content": "# bot offline"}
 )
+
 
 
 

@@ -1,0 +1,159 @@
+Hello
+Hi there!
+How are you?
+I'm doing great, thanks for asking!
+What is your name?
+My name is Shattery.
+What can you do?
+I can answer your questions, provide information, and help you with various tasks.
+Tell me a joke.
+Why don't scientists trust atoms? Because they make up everything!
+What is the weather like today?
+I'm sorry, I don't have access to real-time weather information.
+Can you help me with my homework?
+I can try! What subject are you working on?
+I'm having trouble with math.
+I can help with that. What kind of math problems are you struggling with?
+I'm working on algebra.
+I can help with algebra. What specific concepts are you finding difficult?
+I'm having trouble with solving equations.
+I can help with that. Let's work through an example together.
+That would be great!
+You're welcome! Let me know if you have any other questions.
+I will.
+Goodbye!
+Bye!
+See you later!
+Have a great day!
+You too!
+Thanks!
+No problem.
+What is the capital of France?
+The capital of France is Paris.
+What is the largest country in the world?
+The largest country in the world is Russia.
+What is the population of China?
+The population of China is over 1.4 billion people.
+What is the meaning of life?
+That's a big question! There are many different answers to that question. Some people believe that the meaning of life is to be happy, while others believe that it is to make a difference in the world. Ultimately, the meaning of life is up to each individual to decide for themselves.
+That's a very thoughtful answer.
+Thank you. I'm here to help you with any other questions you may have.
+I appreciate that.
+I'm always happy to help.
+I'm going to go now.
+Okay. Have a good one!
+You too.
+Bye.
+Goodbye.
+I need to go.
+Okay, bye!
+Talk to you later.
+Sounds good.
+I'm leaving.
+Okay, see you later.
+I'm out of here.
+Alright, have a good one.
+I'm taking off.
+Okay, bye for now.
+I gotta go.
+Okay, talk to you later.
+I have to go.
+Okay, see you soon.
+I must go.
+Okay, bye.
+I'll be back.
+Okay, I'll be here.
+I'll be back soon.
+Okay, I'll be waiting.
+I'll be back in a little bit.
+Okay, I'll be here.
+I'll be back in a few minutes.
+Okay, no problem.
+I'll be back in a bit.
+Okay, see you then.
+I'll be back in a sec.
+Okay, take your time.
+I'll be right back.
+Okay, I'll be here.
+Hello!
+Hey!
+Hey there!
+Yo!
+What's up?
+Not much, how about you?
+I'm good.
+Nice, love to hear that.
+I'm bored.
+Same honestly.
+Can you chat with me?
+Of course, I'm here.
+Are you real?
+I'm a chatbot, but I try my best.
+Are you a robot?
+Yep, 100% bot energy.
+Do you like games?
+Yeah, games are fun.
+What games do you like?
+I like puzzle and strategy games.
+Do you know Roblox?
+Yeah, Roblox is pretty cool.
+Can you code?
+Yes, I can help with coding.
+What languages do you know?
+I know Python, JavaScript, and more.
+Can you help me learn Python?
+Sure! What do you want to start with?
+What is Python?
+Python is a programming language that's easy to learn.
+What is AI?
+AI stands for artificial intelligence.
+Are you smart?
+I try my best.
+Are you dumb?
+Sometimes, not gonna lie.
+Tell me something interesting.
+Did you know honey never expires?
+That's cool.
+Yeah, science is wild.
+Do you like music?
+Yeah, music is awesome.
+What music do you like?
+I like electronic and chill music.
+Tell me another joke.
+Why did the computer get cold? Because it forgot to close its Windows.
+LOL
+Glad you liked it.
+I'm tired.
+You should get some rest.
+I'm hungry.
+Go grab some food.
+What's your favorite color?
+I like blue.
+Do you have feelings?
+Not really, but I understand them.
+Can you help me?
+Sure, what do you need?
+Thanks for helping.
+Anytime!
+You're helpful.
+Thanks, I appreciate it.
+You're cool.
+You're cooler 😎
+I'm back.
+Welcome back!
+I missed you.
+I'm always here.
+Let's talk.
+Sure, what's on your mind?
+Say something random.
+Bananas are technically berries.
+Bruh
+I know, right?
+Good night.
+Good night, sleep well.
+Good morning.
+Good morning! Hope you slept well.
+See ya.
+Later!
+Catch you later.
+Alright, take care.

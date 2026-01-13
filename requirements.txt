@@ -10,4 +10,4 @@ spacy==2.1.9
 pytz
 mathparse
 pymongo==3.13.0
-PyYAML==5.1.2
+PyYAML==5.4.1

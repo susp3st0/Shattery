@@ -25,13 +25,6 @@ DEV_GUILD_ID = 1457996708293120086
 LOG_CHANNEL_ID = 1458302442239295667
 
 async def on_ready():
-    print("Bot online")
-
-    guild = discord.Object(id=DEV_GUILD_ID)
-
-    # sync guild commands (fast for testing)
-    bot.tree.copy_global_to(guild=guild)
-    await bot.tree.sync(guild=guild)
 
     # sync global commands (slow but public)
     await bot.tree.sync()
@@ -158,6 +151,7 @@ requests.post(
     os.getenv("WEBHOOK_URL"),
     json={"content": "# bot offline"}
 )
+
 
 
 

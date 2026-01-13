@@ -18,12 +18,6 @@ if not hasattr(time, 'clock'):
     time.clock = time.perf_counter
 
 load_dotenv()
-############## chatbot setup ##############
-chatbot = ChatBot("Shattery")
-trainer = ChatterBotCorpusTrainer(chatbot)
-list_trainer = ListTrainer(chatbot)
-list_trainer.train(conversation)
-############################################
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents)
@@ -42,11 +36,6 @@ async def on_ready():
         os.getenv("WEBHOOK_URL"),
         json={"content": "# bot online! <@&1458303852712562984>"}
     )
-
-@bot.tree.command(name="chatbot", description="chat with the bot, maybe not smart enough")
-async def chat_command(interaction: discord.Interaction, message: str):
-    response = chatbot.get_response(message)
-    await interaction.response.send_message(f"**user**: {message}\n**bot**: {response}")
 
 @bot.tree.command(name="ping", description="check bot status & latency")
 async def ping(interaction: discord.Interaction):
@@ -164,6 +153,7 @@ requests.post(
     os.getenv("WEBHOOK_URL"),
     json={"content": "# bot offline"}
 )
+
 
 
 

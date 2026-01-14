@@ -1,4 +1,4 @@
-version = "alpha v2.2.0"
+version = "alpha v2.2.1"
 ##################
 import time
 import discord
@@ -10,6 +10,7 @@ import os
 from dotenv import load_dotenv
 from datetime import timedelta
 import base64
+from PIL import Image, ImageDraw
 
 START_TIME = time.time()
 

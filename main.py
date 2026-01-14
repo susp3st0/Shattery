@@ -1,4 +1,4 @@
-version = "alpha v2.1.0"
+version = "alpha v2.2.0"
 ##################
 import time
 import discord
@@ -142,6 +142,55 @@ async def b64(interaction: discord.Interaction, text: str):
 
     except:
         await interaction.response.send_message("invalid base64", ephemeral=True)
+
+@bot.tree.command(name="randomdraw", description="random draw")
+async def randomdraw(interaction: discord.Interaction, randomrange: int):
+    img = Image.new("RGB", (400, 300), "white")
+    draw = ImageDraw.Draw(img)
+    for _ in range(randomrange):
+        x1 = random.randint(0, 350)
+        y1 = random.randint(0, 250)
+        x2 = x1 + random.randint(10, 50)
+        y2 = y1 + random.randint(10, 50)
+
+        color = (
+            random.randint(0,255),
+            random.randint(0,255),
+            random.randint(0,255)
+        )
+
+        draw.rectangle([x1, y1, x2, y2], fill=color)
+
+    for _ in range(randomrange):
+        x1 = random.randint(0, 350)
+        y1 = random.randint(0, 250)
+        x2 = x1 + random.randint(10, 50)
+        y2 = y1 + random.randint(10, 50)
+
+        color = (
+            random.randint(0,255),
+            random.randint(0,255),
+            random.randint(0,255)
+        )
+
+        draw.ellipse([x1, y1, x2, y2], fill=color)
+
+    for _ in range(randomrange):
+        x1 = random.randint(0, 350)
+        y1 = random.randint(0, 250)
+        x2 = x1 + random.randint(10, 50)
+        y2 = y1 + random.randint(10, 50)
+
+        color = (
+            random.randint(0,255),
+            random.randint(0,255),
+            random.randint(0,255)
+        )
+
+        draw.line([x1, y1, x2, y2], fill=color)
+
+    img.save("random.png")
+    await interaction.response.send_message("result:",file=discord.File("random.png"))
 
 @bot.tree.command(name="timeout", description="timeout a user")
 @app_commands.checks.has_permissions(moderate_members=True)

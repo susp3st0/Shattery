@@ -148,7 +148,7 @@ async def b64(interaction: discord.Interaction, text: str):
 async def randomdraw(interaction: discord.Interaction, randomrange: int):
     img = Image.new("RGB", (400, 300), "white")
     draw = ImageDraw.Draw(img)
-    if randomrange < 999:
+    if randomrange < 9999:
         for _ in range(randomrange):
             x1 = random.randint(0, 350)
             y1 = random.randint(0, 250)
@@ -193,7 +193,7 @@ async def randomdraw(interaction: discord.Interaction, randomrange: int):
         img.save("random.png")
         await interaction.response.send_message("result:",file=discord.File("random.png"))
     else:
-        await interaction.response.send_message(f"limit is 999")
+        await interaction.response.send_message(f"please enter below 9999")
         
 
     img.save("random.png")

@@ -10,6 +10,7 @@ import os
 from dotenv import load_dotenv
 from datetime import timedelta
 import base64
+from PIL import Image, ImageDraw
 
 START_TIME = time.time()
 

@@ -147,11 +147,12 @@ async def b64(interaction: discord.Interaction, text: str):
 async def randomdraw(interaction: discord.Interaction, randomrange: int):
     img = Image.new("RGB", (400, 300), "white")
     draw = ImageDraw.Draw(img)
-    for _ in range(randomrange):
-        x1 = random.randint(0, 350)
-        y1 = random.randint(0, 250)
-        x2 = x1 + random.randint(10, 50)
-        y2 = y1 + random.randint(10, 50)
+    if randomrange < 999:
+        for _ in range(randomrange):
+            x1 = random.randint(0, 350)
+            y1 = random.randint(0, 250)
+            x2 = x1 + random.randint(10, 50)
+            y2 = y1 + random.randint(10, 50)
 
         color = (
             random.randint(0,255),
@@ -161,33 +162,38 @@ async def randomdraw(interaction: discord.Interaction, randomrange: int):
 
         draw.rectangle([x1, y1, x2, y2], fill=color)
 
-    for _ in range(randomrange):
-        x1 = random.randint(0, 350)
-        y1 = random.randint(0, 250)
-        x2 = x1 + random.randint(10, 50)
-        y2 = y1 + random.randint(10, 50)
+        for _ in range(randomrange):
+            x1 = random.randint(0, 350)
+            y1 = random.randint(0, 250)
+            x2 = x1 + random.randint(10, 50)
+            y2 = y1 + random.randint(10, 50)
 
-        color = (
-            random.randint(0,255),
-            random.randint(0,255),
-            random.randint(0,255)
-        )
+            color = (
+                random.randint(0,255),
+                random.randint(0,255),
+                random.randint(0,255)
+            )
 
-        draw.ellipse([x1, y1, x2, y2], fill=color)
+            draw.ellipse([x1, y1, x2, y2], fill=color)
 
-    for _ in range(randomrange):
-        x1 = random.randint(0, 350)
-        y1 = random.randint(0, 250)
-        x2 = x1 + random.randint(10, 50)
-        y2 = y1 + random.randint(10, 50)
+        for _ in range(randomrange):
+            x1 = random.randint(0, 350)
+            y1 = random.randint(0, 250)
+            x2 = x1 + random.randint(10, 50)
+            y2 = y1 + random.randint(10, 50)
 
-        color = (
-            random.randint(0,255),
-            random.randint(0,255),
-            random.randint(0,255)
-        )
+            color = (
+                random.randint(0,255),
+                random.randint(0,255),
+                random.randint(0,255)
+            )
 
-        draw.line([x1, y1, x2, y2], fill=color)
+            draw.line([x1, y1, x2, y2], fill=color)
+        img.save("random.png")
+        await interaction.response.send_message("result:",file=discord.File("random.png"))
+    else:
+        await interaction.response.send_message(f"limit is 999")
+        
 
     img.save("random.png")
     await interaction.response.send_message("result:",file=discord.File("random.png"))

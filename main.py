@@ -1,4 +1,4 @@
-version = "alpha v2.0.0"
+version = "alpha v2.1.0"
 ##################
 import time
 import discord
@@ -9,6 +9,7 @@ import requests
 import os
 from dotenv import load_dotenv
 from datetime import timedelta
+import base64
 
 START_TIME = time.time()
 
@@ -91,7 +92,7 @@ async def rate(interaction, member: discord.Member):
 async def about(interaction: discord.Interaction):
     embed = discord.Embed(
         title="about this bot",
-        description="a bot made by susp3st0",
+        description="a bot made by susp3st0\nand made with python",
         color=discord.Color.green()
     )
     embed.add_field(name="creator", value="susp3st0", inline=False)
@@ -123,6 +124,24 @@ async def ban(interaction: discord.Interaction, member: discord.Member, reason: 
 async def kick_error(interaction: discord.Interaction, error):
     if isinstance(error, (app_commands.MissingRole, app_commands.MissingAnyRole)):
         await interaction.response.send_message("You dont have permission", ephemeral=True)
+
+@bot.tree.command(name="b64encode", description="text to base64")
+async def b64(interaction: discord.Interaction, text: str):
+    try:
+        result = base64.b64encode(text.encode()).decode()
+        await interaction.response.send_message(f"user input: ```{text}```\nresult: ```{result}```", ephemeral=True)
+
+    except:
+        await interaction.response.send_message("invalid base64", ephemeral=True)
+
+@bot.tree.command(name="b64decode", description="base64 to text")
+async def b64(interaction: discord.Interaction, text: str):
+    try:
+        result = base64.b64decode(text.encode()).decode()
+        await interaction.response.send_message(f"user input: ```{text}```\nresult: ```{result}```", ephemeral=True)
+
+    except:
+        await interaction.response.send_message("invalid base64", ephemeral=True)
 
 @bot.tree.command(name="timeout", description="timeout a user")
 @app_commands.checks.has_permissions(moderate_members=True)

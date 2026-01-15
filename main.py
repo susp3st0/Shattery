@@ -85,6 +85,11 @@ async def meme(interaction: discord.Interaction):
     random_file = random.choice(all_files)
     await interaction.response.send_message(file=discord.File(f"meme/{random_file}"))
 
+@bot.tree.command(name="flip", description="flip a coin")
+async def flip(interaction: discord.Interaction):
+    result = random.choice(["heads", "tails"])
+    await interaction.response.send_message(f"**{result}**")
+
 @bot.tree.command(name="rate", description="rate user")
 async def rate(interaction, member: discord.Member):
     await interaction.response.send_message(f"{member.mention} is **{random.randint(1,10)}/10**")

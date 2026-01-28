@@ -66,7 +66,7 @@ async def ping(interaction: discord.Interaction):
     )
 
     embed.add_field(name="latency", value=f"{ws_latency} ms", inline=True)
-    embed.add_field(name="uptime", value=f"{hours}h {minutes}m", inline=True)
+    embed.add_field(name="uptime since update", value=f"{hours}h {minutes}m", inline=True)
     embed.add_field(name="status", value=f"{status}")
     await interaction.response.send_message(embed=embed)
 

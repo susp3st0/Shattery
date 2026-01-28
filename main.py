@@ -1,4 +1,4 @@
-version = "alpha v2.2.2"
+version = "release v1.0.0"
 ##################
 import time
 import discord
@@ -11,6 +11,8 @@ from dotenv import load_dotenv
 from datetime import timedelta
 import base64
 from PIL import Image, ImageDraw
+from typing import Optional
+import aiohttp
 
 START_TIME = time.time()
 
@@ -84,6 +86,28 @@ async def meme(interaction: discord.Interaction):
     all_files = os.listdir("meme")
     random_file = random.choice(all_files)
     await interaction.response.send_message(file=discord.File(f"meme/{random_file}"))
+
+@bot.tree.command(name="randomwaifu", description="random waifu from waifu.im")
+async def waifu(interaction: discord.Interaction, tags: Optional[str] = None):
+    # 1. Tell Discord to wait so the command doesn't time out
+
+    blocked_tags = ["oral","ass","hentai","milf","oral","paizuri","ecchi"]
+    if tags and tags.lower() in blocked_tags:
+        return await interaction.response.send_message("that tag is not allowed!", ephemeral=True)
+    await interaction.response.defer()
+    url = "https://api.waifu.im/search"
+    params = {"included_tags": tags} if tags else {}
+
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url, params=params) as r:
+            data = await r.json()
+
+    # 2. Check if we actually got an image back before trying to send it
+    if "images" in data:
+        image_url = data['images'][0]['url']
+        await interaction.followup.send(image_url)
+    else:
+        await interaction.followup.send("no tags found, here a list:\nwaifu\nmaid\nmarin-kitagawa\nmori-calliope\nraiden-shogun\noppai\nselfies\nuniform\nkamisato-ayaka\ndoesnt support multi tags :(")
 
 @bot.tree.command(name="flip", description="flip a coin")
 async def flip(interaction: discord.Interaction):

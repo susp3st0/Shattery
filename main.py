@@ -132,7 +132,7 @@ async def about(interaction: discord.Interaction):
 @bot.tree.command(name="say", description="say smth")
 async def say(interaction: discord.Interaction):
     fileo = "osu!_Rr046wf8tD.mp4"
-    await interaction.response.send_message(fileo)
+    await interaction.response.send_message(file=discord.File(fileo))
 
 @bot.tree.command(name="8ball",description="similer to /choose, but this thing is yes/no")
 async def ball(interaction: discord.Interaction, question: str):

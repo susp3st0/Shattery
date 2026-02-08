@@ -96,14 +96,13 @@ async def waifu(interaction: discord.Interaction, tags: Optional[str] = None):
         return await interaction.response.send_message("that tag is not allowed!", ephemeral=True)
     response = requests.get(
         "https://api.waifu.im/images",
-        params = {"included_tags": tags} if tags else {}
+        params = {"Included_tags": tags} if tags else {}
     )
     data = response.json()
 
     # 2. Check if we actually got an image back before trying to send it
     if "images" in data:
-        image_url = data['items'][0]['url']
-        await interaction.followup.send(image_url)
+        await interaction.followup.send(data['items'][0]['url'])
     else:
         await interaction.followup.send("no tags found, here a list:\nwaifu\nmaid\nmarin-kitagawa\nmori-calliope\nraiden-shogun\noppai\nselfies\nuniform\nkamisato-ayaka\ndoesnt support multi tags :(")
 

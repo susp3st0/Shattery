@@ -93,37 +93,7 @@ from typing import Optional
 
 @bot.tree.command(name="randomwaifu", description="random waifu from waifu.im")
 async def waifu(interaction: discord.Interaction, tags: Optional[str] = None):
-    # 1. Acknowledge the command immediately to prevent timeouts/errors
-    await interaction.response.defer()
-
-    blocked_tags = ["oral","ass","hentai","milf","paizuri","ecchi"]
-    if tags and tags.lower() in blocked_tags:
-        return await interaction.followup.send("that tag is not allowed!", ephemeral=True)
-    
-    # API Request
-    params = {"Included_tags": tags} if tags else {}
-    response = requests.get("https://api.waifu.im/images", params=params)
-    data = response.json()
-
-    # --- DEBUGGING ---
-    print(f"Tags requested: {tags}")
-    print(f"API Response: {data}")
-    # -----------------
-
-    # 2. Correctly check if "images" key exists and contains data
-    if "images" in data and len(data["images"]) > 0:
-        # Use the URL from the first image in the list
-        image_url = data['images'][0]['url']
-        await interaction.followup.send(image_url)
-    else:
-        # This will now trigger if the API returns an empty list of images
-        await interaction.followup.send(
-            "No images found with those tags. Available tags:\n"
-            "waifu, maid, marin-kitagawa, mori-calliope, raiden-shogun, "
-            "oppai, selfies, uniform, kamisato-ayaka\n"
-            "(Note: API doesn't support multi tags :()", 
-            ephemeral=True
-        )
+    await interaction.response.send_message("sorry, this command under maintain :(")
 
 @bot.tree.command(name="flip", description="flip a coin")
 async def flip(interaction: discord.Interaction):

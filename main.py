@@ -89,11 +89,14 @@ async def meme(interaction: discord.Interaction):
 
 @bot.tree.command(name="randomwaifu", description="random waifu from waifu.im")
 async def waifu(interaction: discord.Interaction, tags: Optional[str] = None):
-    # 1. Tell Discord to wait so the command doesn't time out
+    # 1. Acknowledge the command immediately to prevent timeouts/errors
+    await interaction.response.defer()
 
     blocked_tags = ["oral","ass","hentai","milf","oral","paizuri","ecchi"]
     if tags and tags.lower() in blocked_tags:
-        return await interaction.response.send_message("that tag is not allowed!", ephemeral=True)
+        # Use followup here since we already deferred
+        return await interaction.followup.send("that tag is not allowed!", ephemeral=True)
+    
     response = requests.get(
         "https://api.waifu.im/images",
         params = {"Included_tags": tags} if tags else {}
@@ -101,11 +104,11 @@ async def waifu(interaction: discord.Interaction, tags: Optional[str] = None):
     data = response.json()
 
     # 2. Check if we actually got an image back before trying to send it
-    if "images" in data:
-        await interaction.followup.send(data['items'][0]['url'])
+    if "images" in data and data['images']:
+        await interaction.followup.send(data['images'][0]['url'])
     else:
         await interaction.followup.send("no tags found, here a list:\nwaifu\nmaid\nmarin-kitagawa\nmori-calliope\nraiden-shogun\noppai\nselfies\nuniform\nkamisato-ayaka\ndoesnt support multi tags :(")
-
+        
 @bot.tree.command(name="flip", description="flip a coin")
 async def flip(interaction: discord.Interaction):
     result = random.choice(["heads", "tails"])

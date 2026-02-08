@@ -94,17 +94,15 @@ async def waifu(interaction: discord.Interaction, tags: Optional[str] = None):
     blocked_tags = ["oral","ass","hentai","milf","oral","paizuri","ecchi"]
     if tags and tags.lower() in blocked_tags:
         return await interaction.response.send_message("that tag is not allowed!", ephemeral=True)
-    await interaction.response.defer()
-    url = "https://api.waifu.im/search"
-    params = {"included_tags": tags} if tags else {}
-
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url, params=params) as r:
-            data = await r.json()
+    response = requests.get(
+        "https://api.waifu.im/search",
+        params = {"included_tags": tags} if tags else {}
+    )
+    data = response.json()
 
     # 2. Check if we actually got an image back before trying to send it
     if "images" in data:
-        image_url = data['images'][0]['url']
+        image_url = data['items'][0]['url']
         await interaction.followup.send(image_url)
     else:
         await interaction.followup.send("no tags found, here a list:\nwaifu\nmaid\nmarin-kitagawa\nmori-calliope\nraiden-shogun\noppai\nselfies\nuniform\nkamisato-ayaka\ndoesnt support multi tags :(")

@@ -95,7 +95,7 @@ async def waifu(interaction: discord.Interaction, tags: Optional[str] = None):
     if tags and tags.lower() in blocked_tags:
         return await interaction.response.send_message("that tag is not allowed!", ephemeral=True)
     response = requests.get(
-        "https://api.waifu.im/search",
+        "https://api.waifu.im/images",
         params = {"included_tags": tags} if tags else {}
     )
     data = response.json()
